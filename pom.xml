@@ -7,7 +7,7 @@
     <name>riot-api-java</name>
     <groupId>net.joelinn</groupId>
     <artifactId>riot</artifactId>
-    <version>0.1.0</version>
+    <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>A Java client library for Riot's API</description>
     <url>http://github.com/jlinn/riot-api-java</url>
@@ -117,8 +117,7 @@
                 <artifactId>maven-release-plugin</artifactId>
                 <version>2.4.2</version>
                 <configuration>
-                    <!-- TODO: gpg passphrase -->
-                    <!--<arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>-->
+                    <arguments>-Dgpg.passphrase=${gpg.passphrase}</arguments>
                 </configuration>
             </plugin>
         </plugins>
@@ -153,8 +152,7 @@
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>1.4</version>
                         <configuration>
-                            <!-- todo: gpg -->
-                            <!--<passphrase>${gpg.passphrase}</passphrase>-->
+                            <passphrase>${gpg.passphrase}</passphrase>
                         </configuration>
                         <executions>
                             <execution>
