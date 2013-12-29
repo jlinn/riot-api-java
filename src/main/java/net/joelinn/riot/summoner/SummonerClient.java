@@ -1,6 +1,5 @@
 package net.joelinn.riot.summoner;
 
-import com.sun.deploy.util.StringUtils;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import net.joelinn.riot.AbstractClient;
@@ -10,8 +9,6 @@ import net.joelinn.riot.summoner.dto.RunePages;
 import net.joelinn.riot.summoner.dto.Summoner;
 import net.joelinn.riot.summoner.dto.SummonerNameList;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Joe Linn
@@ -46,11 +43,13 @@ public class SummonerClient extends AbstractClient{
     }
 
     public SummonerNameList getSummonerNames(long... summonerIds){
-        List<String> list = new ArrayList<>(summonerIds.length);
+        String joined = "";
+        String comma = "";
         for(long id : summonerIds){
-            list.add(Long.toString(id));
+            joined += comma + Long.toString(id);
+            comma = ",";
         }
-        return get(String.format("%s/name", StringUtils.join(list, ","))).getEntity(SummonerNameList.class);
+        return get(String.format("%s/name", joined)).getEntity(SummonerNameList.class);
     }
 
     @Override
