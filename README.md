@@ -7,25 +7,36 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 |API|Version|
 |---|-------|
 |champion|1.1|
-|game|1.2|
+|game|1.3|
 |league|2.2|
 |stats|1.2|
 |summoner|1.2|
 |team|2.2|
 
 ## Usage
-Maven dependency:
+### Maven dependency:
 ```xml
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.1.2</version>
+  <version>0.1.3</version>
 </dependency>
 ```
 
-Retrieving a summoner by name:
+### Instantiating the client object:
 ```java
 Riot client = new Riot("your-api-key", Region.NA);
+```
+
+### Champion calls
+```java
+// Retrieving a all champions
+ChampionList champions = client.champion().getChampions();
+```
+
+### Summoner calls
+```java
+// Retrieving a summoner by name
 Summoner summoner = client.summoner().getSummoner("SummonerName");
 ```
 

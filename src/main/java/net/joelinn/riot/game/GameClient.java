@@ -19,7 +19,7 @@ public class GameClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "1.2";
+        return "1.3";
     }
 
     /**

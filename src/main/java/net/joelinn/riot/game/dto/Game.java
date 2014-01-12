@@ -1,7 +1,5 @@
 package net.joelinn.riot.game.dto;
 
-import java.util.Date;
-
 /**
  * Joe Linn
  * 12/10/13
@@ -9,6 +7,7 @@ import java.util.Date;
 public class Game {
     public int championId;
     public long createDate;
+    public String createDateAsDate;
     public Player[] fellowPlayers;
     public long gameId;
     public String gameMode;
@@ -18,7 +17,7 @@ public class Game {
     public int mapId;
     public int spell1;
     public int spell2;
-    public Stat[] statistics;
+    public RawStats stats;
     public String subType;
     public int teamId;
 
