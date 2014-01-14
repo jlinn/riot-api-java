@@ -111,12 +111,13 @@ public abstract class AbstractClient {
         if(clientResponse.getClientResponseStatus().getStatusCode() != ClientResponse.Status.OK.getStatusCode()
                 && clientResponse.getClientResponseStatus().getStatusCode() != ClientResponse.Status.CREATED.getStatusCode()){
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationConfig.Feature.UNWRAP_ROOT_VALUE, true);
+            String message = null;
             try {
-                throw new ApiException(clientResponse.getClientResponseStatus(),
-                        objectMapper.readValue(clientResponse.getEntity(String.class), Error.class).message);
-            } catch (IOException e) {
-                e.printStackTrace();
+                message = objectMapper.readValue(clientResponse.getEntity(String.class), Error.class).message;
+            } catch (IOException ignored) {
+
             }
+            throw new ApiException(clientResponse.getClientResponseStatus(), message);
         }
     }
 

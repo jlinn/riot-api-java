@@ -42,7 +42,7 @@ public class RawStats {
     public int nodeCapture;
     public int nodeCaptureAssist;
     public int nodeNeutralize;
-    public int nodNeutralizeAssist;
+    public int nodeNeutralizeAssist;
     public int numDeaths;
     public int numItemsBought;
     public int objectivePlayerScore;

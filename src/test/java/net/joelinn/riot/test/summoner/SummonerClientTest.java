@@ -1,6 +1,7 @@
 package net.joelinn.riot.test.summoner;
 
 import junit.framework.TestCase;
+import net.joelinn.riot.ApiException;
 import net.joelinn.riot.summoner.*;
 import net.joelinn.riot.summoner.dto.*;
 import net.joelinn.riot.test.BaseTest;
@@ -39,6 +40,15 @@ public class SummonerClientTest extends BaseTest{
         Summoner summoner = client.getSummoner(getSummonerName());
 
         TestCase.assertEquals(summoner.id, client.getSummoner(summoner.id).id);
+
+        boolean exceptionThrown = false;
+        try {
+            summoner = client.getSummoner(getSummonerName() + "oiwefaoiwefaioefowef");
+        }
+        catch (ApiException e){
+            exceptionThrown = true;
+        }
+        TestCase.assertTrue(exceptionThrown);
     }
 
     @Test
