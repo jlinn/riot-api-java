@@ -30,7 +30,7 @@ Riot client = new Riot("your-api-key", Region.NA);
 
 ### Champion calls
 ```java
-// Retrieving a all champions
+// Retrieving all champions
 ChampionList champions = client.champion().getChampions();
 ```
 
