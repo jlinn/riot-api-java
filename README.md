@@ -10,7 +10,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 |game|1.3|
 |league|2.2|
 |stats|1.2|
-|summoner|1.2|
+|summoner|1.3|
 |team|2.2|
 
 ## Usage
@@ -19,7 +19,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.1.3</version>
+  <version>0.1.5</version>
 </dependency>
 ```
 
@@ -37,7 +37,14 @@ ChampionList champions = client.champion().getChampions();
 ### Summoner calls
 ```java
 // Retrieving a summoner by name
-Summoner summoner = client.summoner().getSummoner("SummonerName");
+Map<String, Summoner> summoners = client.summoner().getSummoner("SummonerName");
+Summoner summoner = summoners.get("SummonerName");
+```
+
+### Game calls
+```java
+// Retrieving a summoner's recent games
+RecentGames games = client.game().getRecentGamesBySummoner(summonerId);
 ```
 
 ## Legal Jibber Jabber

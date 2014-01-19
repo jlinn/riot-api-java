@@ -8,6 +8,8 @@ import net.joelinn.riot.test.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Map;
+
 /**
  * Joe Linn
  * 12/14/13
@@ -23,27 +25,28 @@ public class SummonerClientTest extends BaseTest{
     @Test
     public void testGetMasteries(){
         long summonerId = getSummonerId();
-        MasteryPages masteries = client.getMasteries(summonerId);
+        Map<String, MasteryPages> masteries = client.getMasteries(summonerId);
 
-        TestCase.assertEquals(summonerId, masteries.summonerId);
+        TestCase.assertEquals(summonerId, masteries.get(Long.toString(summonerId)).summonerId);
     }
 
     @Test
     public void testGetRunes(){
-        RunePages runes = client.getRunes(getSummonerId());
+        Map<String, RunePages> runes = client.getRunes(getSummonerId());
 
-        TestCase.assertEquals(getSummonerId(), runes.summonerId);
+        TestCase.assertEquals(getSummonerId(), runes.get(Long.toString(getSummonerId())).summonerId);
     }
 
     @Test
     public void testGetSummoner(){
-        Summoner summoner = client.getSummoner(getSummonerName());
+        Map<String, Summoner> summoners = client.getSummoner(getSummonerName());
+        Summoner summoner = summoners.get(getSummonerName());
 
-        TestCase.assertEquals(summoner.id, client.getSummoner(summoner.id).id);
+        TestCase.assertEquals(summoner.id, client.getSummoner(summoner.id).get(Long.toString(summoner.id)).id);
 
         boolean exceptionThrown = false;
         try {
-            summoner = client.getSummoner(getSummonerName() + "oiwefaoiwefaioefowef");
+            client.getSummoner(getSummonerName() + "oiwefaoiwefaioefowef");
         }
         catch (ApiException e){
             exceptionThrown = true;
@@ -53,11 +56,11 @@ public class SummonerClientTest extends BaseTest{
 
     @Test
     public void testGetSummonerNames(){
-        SummonerNameList summonerNames = client.getSummonerNames(getSummonerId(), 1, 3);
+        Map<String, String> summonerNames = client.getSummonerNames(getSummonerId(), 1, 3);
 
         boolean summonerFound = false;
-        for(SummonerName name : summonerNames.summoners){
-            if(name.id == getSummonerId()){
+        for(String id : summonerNames.keySet()){
+            if(id.equals(String.valueOf(getSummonerId()))){
                 summonerFound = true;
             }
         }

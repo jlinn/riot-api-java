@@ -7,5 +7,4 @@ package net.joelinn.riot.summoner.dto;
 public class RuneSlot {
     public Rune rune;
     public int runeSlotId;
-
 }
