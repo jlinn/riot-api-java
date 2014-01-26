@@ -19,7 +19,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.6</version>
 </dependency>
 ```
 
