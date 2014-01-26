@@ -8,7 +8,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 |---|-------|
 |champion|1.1|
 |game|1.3|
-|league|2.2|
+|league|2.3|
 |stats|1.2|
 |summoner|1.3|
 |team|2.2|
@@ -45,6 +45,12 @@ Summoner summoner = summoners.get("SummonerName");
 ```java
 // Retrieving a summoner's recent games
 RecentGames games = client.game().getRecentGamesBySummoner(summonerId);
+```
+
+### League calls
+```java
+// Retrieving league data by summoner id
+List<League> leagues = client.league().getLeaguesBySummoner(summonerId);
 ```
 
 ## Legal Jibber Jabber

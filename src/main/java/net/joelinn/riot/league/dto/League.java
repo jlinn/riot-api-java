@@ -7,6 +7,7 @@ package net.joelinn.riot.league.dto;
 public class League {
     public LeagueItem[] entries;
     public String name;
+    public String participantId;
     public String queue;
     public String tier;
 

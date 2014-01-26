@@ -7,8 +7,7 @@ import net.joelinn.riot.AbstractClient;
 import net.joelinn.riot.Region;
 import net.joelinn.riot.league.dto.League;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 /**
  * Joe Linn
@@ -23,17 +22,17 @@ public class LeagueClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "2.2";
+        return "2.3";
     }
 
     /**
      * Retrieve leagues data for a summoner
      * @param summonerId the id of the desired summoner
      * @return a League object
-     * @see <a href="https://developer.riotgames.com/api/methods#!/307/1055">https://developer.riotgames.com/api/methods#!/307/1055</a>
+     * @see <a href="https://developer.riotgames.com/api/methods#!/369/1261">https://developer.riotgames.com/api/methods#!/307/1055</a>
      */
-    public Map<String, League> getLeagueBySummoner(long summonerId){
-        return get(String.format("by-summoner/%s", summonerId)).getEntity(new GenericType<HashMap<String, League>>(){});
+    public List<League> getLeaguesBySummoner(long summonerId){
+        return get(String.format("by-summoner/%s", summonerId)).getEntity(new GenericType<List<League>>(){});
     }
 
     @Override

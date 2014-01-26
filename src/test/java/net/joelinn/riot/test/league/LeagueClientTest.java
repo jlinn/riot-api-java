@@ -7,7 +7,7 @@ import net.joelinn.riot.test.BaseTest;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * Joe Linn
@@ -24,8 +24,14 @@ public class LeagueClientTest extends BaseTest{
     @Test
     public void testGetLeagueBySummoner(){
         long summonerId = getSummonerId();
-        Map<String,League> leagueMap = client.getLeagueBySummoner(summonerId);
+        List<League> leagueList = client.getLeaguesBySummoner(summonerId);
 
-        TestCase.assertTrue(leagueMap.keySet().contains(Long.toString(summonerId)));
+        boolean summonerFound = false;
+        for(League league : leagueList){
+            if(Long.valueOf(league.participantId) == summonerId){
+                summonerFound = true;
+            }
+        }
+        TestCase.assertTrue(summonerFound);
     }
 }

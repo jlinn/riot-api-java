@@ -12,7 +12,6 @@ public class LeagueItem {
     public long lastPlayed;
     public String leagueName;
     public int leaguePoints;
-    public int losses;
     public MiniSeries miniSeries;
     public String playerOrTeamId;
     public String playerOrTeamName;
