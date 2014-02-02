@@ -126,6 +126,6 @@ public abstract class AbstractClient {
         if(queryParams != null){
             webResource = webResource.queryParams(queryParams);
         }
-        return webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_FORM_URLENCODED);
+        return webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON);
     }
 }

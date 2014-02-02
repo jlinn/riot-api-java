@@ -6,7 +6,7 @@ package net.joelinn.riot;
  */
 public enum Region {
     NA ("na"),
-    EUW ("euq"),
+    EUW ("euw"),
     EUNE ("eune"),
     BR ("br"),
     TR ("tr");

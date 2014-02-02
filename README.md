@@ -19,7 +19,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.1.5</version>
+  <version>0.1.7</version>
 </dependency>
 ```
 
@@ -51,6 +51,12 @@ RecentGames games = client.game().getRecentGamesBySummoner(summonerId);
 ```java
 // Retrieving league data by summoner id
 List<League> leagues = client.league().getLeaguesBySummoner(summonerId);
+```
+
+### Static data calls
+```java
+// Retrieving items data, including all optionally returned data
+ItemList items = client.staticData().getItems(ItemListData.all);
 ```
 
 ## Legal Jibber Jabber

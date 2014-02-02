@@ -3,6 +3,7 @@ package net.joelinn.riot;
 import net.joelinn.riot.champion.ChampionClient;
 import net.joelinn.riot.game.GameClient;
 import net.joelinn.riot.league.LeagueClient;
+import net.joelinn.riot.staticdata.StaticDataClient;
 import net.joelinn.riot.stats.StatsClient;
 import net.joelinn.riot.summoner.SummonerClient;
 import net.joelinn.riot.team.TeamClient;
@@ -74,5 +75,9 @@ public class Riot {
 
     public TeamClient team(){
         return getClient(TeamClient.class);
+    }
+
+    public StaticDataClient staticData(){
+        return getClient(StaticDataClient.class);
     }
 }
