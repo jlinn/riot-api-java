@@ -15,6 +15,8 @@ import org.junit.Test;
 public class ChampionClientTest extends BaseTest{
     protected ChampionClient client;
 
+    protected static final long SHYVANA_ID = 102;
+
     @Before
     public void setUp(){
         client = new ChampionClient(getApiKey(), getRegion());
@@ -26,10 +28,16 @@ public class ChampionClientTest extends BaseTest{
 
         boolean dragonFound = false;
         for(Champion champ : champs.champions){
-            if(champ.name.equals("Shyvana") && champ.id == 102){
+            if(champ.id == SHYVANA_ID){
                 dragonFound = true;
             }
         }
         TestCase.assertTrue(dragonFound);
+    }
+
+    @Test
+    public void testGetChampion(){
+        Champion shyvana = client.getChampion(SHYVANA_ID);
+        TestCase.assertEquals(SHYVANA_ID, shyvana.id);
     }
 }

@@ -27,6 +27,7 @@ public class AggregatedStats {
     public int maxNodeCaptureAssist;
     public int maxNodeNeutralize;
     public int maxNodeNeutralizeAssist;
+    public int maxNumDeaths;
     public int maxObjectivePlayerScore;
     public int maxTeamObjective;
     public int maxTimePlayed;
@@ -41,6 +42,7 @@ public class AggregatedStats {
     public int totalChampionKills;
     public int totalDamageDealt;
     public int totalDamageTaken;
+    public int totalDeathsPerSession;
     public int totalDoubleKills;
     public int totalFirstBlood;
     public int totalGoldEarned;

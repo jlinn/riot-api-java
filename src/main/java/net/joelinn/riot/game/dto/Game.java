@@ -13,6 +13,7 @@ public class Game {
     public String gameMode;
     public String gameType;
     public boolean invalid;
+    public int ipEarned;
     public int level;
     public int mapId;
     public int spell1;

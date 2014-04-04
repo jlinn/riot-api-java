@@ -4,6 +4,7 @@ import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import net.joelinn.riot.AbstractClient;
 import net.joelinn.riot.Region;
+import net.joelinn.riot.champion.dto.Champion;
 import net.joelinn.riot.champion.dto.ChampionList;
 
 /**
@@ -19,7 +20,7 @@ public class ChampionClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "1.1";
+        return "1.2";
     }
 
     /**
@@ -28,6 +29,15 @@ public class ChampionClient extends AbstractClient{
      */
     public ChampionList getChampions(){
         return get("champion").getEntity(ChampionList.class);
+    }
+
+    /**
+     * @see <a href="https://developer.riotgames.com/api/methods#!/617/1922">https://developer.riotgames.com/api/methods#!/617/1922</a>
+     * @param championId the id of the desired champion
+     * @return data for the requested champion
+     */
+    public Champion getChampion(long championId){
+        return get(String.format("champion/%s", championId)).getEntity(Champion.class);
     }
 
     @Override

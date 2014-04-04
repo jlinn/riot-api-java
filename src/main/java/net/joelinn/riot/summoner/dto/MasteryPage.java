@@ -8,6 +8,6 @@ public class MasteryPage {
     public boolean current;
     public long id;
     public String name;
-    public Talent[] talents;
+    public Mastery[] masteries;
 
 }

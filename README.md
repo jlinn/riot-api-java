@@ -6,11 +6,11 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 ## Supported API Versions
 |API|Version|
 |---|-------|
-|champion|1.1|
+|champion|1.2|
 |game|1.3|
 |league|2.3|
-|stats|1.2|
-|summoner|1.3|
+|stats|1.3|
+|summoner|1.4|
 |team|2.2|
 
 ## Usage
@@ -19,7 +19,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.1.7</version>
+  <version>0.2.0</version>
 </dependency>
 ```
 

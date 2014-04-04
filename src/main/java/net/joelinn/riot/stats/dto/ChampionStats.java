@@ -6,7 +6,6 @@ package net.joelinn.riot.stats.dto;
 */
 public class ChampionStats {
     public int id;
-    public String name;
     public AggregatedStats stats;
 
 }

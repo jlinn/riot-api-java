@@ -19,7 +19,7 @@ public class StatsClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "1.2";
+        return "1.3";
     }
 
     public PlayerStatsSummaryList getSummaryBySummoner(long summonerId){

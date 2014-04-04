@@ -5,7 +5,7 @@
     <name>riot-api-java</name>
     <groupId>net.joelinn</groupId>
     <artifactId>riot</artifactId>
-    <version>0.1.8-SNAPSHOT</version>
+    <version>0.2.0-SNAPSHOT</version>
     <packaging>jar</packaging>
     <description>A Java client library for Riot's API</description>
     <url>http://github.com/jlinn/riot-api-java</url>
