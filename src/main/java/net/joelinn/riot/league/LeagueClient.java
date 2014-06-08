@@ -7,9 +7,9 @@ import net.joelinn.riot.AbstractClient;
 import net.joelinn.riot.Region;
 import net.joelinn.riot.constants.SubType;
 import net.joelinn.riot.league.dto.League;
-import net.joelinn.riot.league.dto.LeagueItem;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Joe Linn
@@ -24,7 +24,7 @@ public class LeagueClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "2.3";
+        return "2.4";
     }
 
     /**
@@ -40,23 +40,43 @@ public class LeagueClient extends AbstractClient{
     }
 
     /**
-     * Retrieve leagues entry data for a summoner, including league entries for all of the summoner's teams
-     * @param summonerId the id of the desired summoner
-     * @return a list of LeagueItem objects
+     * Retrieve leagues entry data for one or more summoners, including league entries for all of the summoners' teams
+     * @param summonerIds one or more summoner ids
+     * @return a map of lists of {@link League} objects, with the map's keys being the requested summoner ids
      * @see <a href="https://developer.riotgames.com/api/methods#!/476/1579">https://developer.riotgames.com/api/methods#!/476/1579</a>
      */
-    public List<LeagueItem> getLeagueEntryBySummoner(long summonerId){
-        return get(String.format("by-summoner/%s/entry", summonerId)).getEntity(new GenericType<List<LeagueItem>>(){});
+    public Map<String, List<League>> getLeagueEntryBySummoner(long... summonerIds){
+        return get(String.format("by-summoner/%s/entry", commaDelimit(summonerIds))).getEntity(new GenericType<Map<String, List<League>>>() {});
     }
 
     /**
-     * Retrieve leagues data for a summoner
-     * @param summonerId the id of the desired summoner
-     * @return a list of League objects
-     * @see <a href="https://developer.riotgames.com/api/methods#!/369/1261">https://developer.riotgames.com/api/methods#!/307/1055</a>
+     * Retrieve leagues data for one or more summoners
+     * @param summonerIds one or more summoner ids
+     * @return a map of lists of League objects, with the map's keys being the requested summoner ids
+     * @see <a href="https://developer.riotgames.com/api/methods#!/741/2640">https://developer.riotgames.com/api/methods#!/741/2640</a>
      */
-    public List<League> getLeaguesBySummoner(long summonerId){
-        return get(String.format("by-summoner/%s", summonerId)).getEntity(new GenericType<List<League>>(){});
+    public Map<String, List<League>> getLeaguesBySummoner(long... summonerIds){
+        return get(String.format("by-summoner/%s", commaDelimit(summonerIds))).getEntity(new GenericType<Map<String, List<League>>>(){});
+    }
+
+    /**
+     * Retrieve leagues data for one or more teams
+     * @param teamIds one or more team ids
+     * @return a map of lists of {@link League} objects, with the keys of the map being the requested team ids
+     * <a href="https://developer.riotgames.com/api/methods#!/741/2639">https://developer.riotgames.com/api/methods#!/741/2639</a>
+     */
+    public Map<String, List<League>> getLeaguesByTeam(String... teamIds){
+        return get("by-team/" + commaDelimit(teamIds)).getEntity(new GenericType<Map<String, List<League>>>(){});
+    }
+
+    /**
+     * Retrieve league entries for one or more teams
+     * @param teamIds one or more team ids
+     * @return a map of lists of {@link League} objects, with the keys of the map being the requested team ids
+     * <a href="https://developer.riotgames.com/api/methods#!/741/2638">https://developer.riotgames.com/api/methods#!/741/2638</a>
+     */
+    public Map<String, List<League>> getLeagueEntriesByTeam(String... teamIds){
+        return get(String.format("by-team/%s/entry", commaDelimit(teamIds))).getEntity(new GenericType<Map<String, List<League>>>(){});
     }
 
     @Override

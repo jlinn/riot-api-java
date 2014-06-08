@@ -8,10 +8,10 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 |---|-------|
 |champion|1.2|
 |game|1.3|
-|league|2.3|
+|league|2.4|
 |stats|1.3|
 |summoner|1.4|
-|team|2.2|
+|team|2.3|
 
 ## Usage
 ### Maven dependency:
@@ -19,7 +19,7 @@ A Java client for the [Riot Games API](https://developer.riotgames.com/api/metho
 <dependency>
   <groupId>net.joelinn</groupId>
   <artifactId>riot</artifactId>
-  <version>0.2.0</version>
+  <version>0.2.1</version>
 </dependency>
 ```
 

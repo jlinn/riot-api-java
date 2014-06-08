@@ -5,7 +5,7 @@ package net.joelinn.riot.league.dto;
  * 12/10/13
  */
 public class League {
-    public LeagueItem[] entries;
+    public LeagueEntry[] entries;
     public String name;
     public String participantId;
     public String queue;

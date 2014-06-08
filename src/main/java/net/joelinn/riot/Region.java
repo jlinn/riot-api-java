@@ -9,7 +9,12 @@ public enum Region {
     EUW ("euw"),
     EUNE ("eune"),
     BR ("br"),
-    TR ("tr");
+    TR ("tr"),
+    LAN ("lan"),
+    LAS ("las"),
+    OCE ("oce"),
+    RU ("ru"),
+    KR ("kr");
 
     private String name;
 

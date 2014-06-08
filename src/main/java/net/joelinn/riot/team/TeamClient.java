@@ -1,10 +1,14 @@
 package net.joelinn.riot.team;
 
 import com.sun.jersey.api.client.ClientResponse;
+import com.sun.jersey.api.client.GenericType;
 import com.sun.jersey.core.util.MultivaluedMapImpl;
 import net.joelinn.riot.AbstractClient;
 import net.joelinn.riot.Region;
 import net.joelinn.riot.team.dto.Team;
+
+import java.util.List;
+import java.util.Map;
 
 /**
  * Joe Linn
@@ -18,11 +22,16 @@ public class TeamClient extends AbstractClient{
 
     @Override
     protected String getVersion() {
-        return "2.2";
+        return "2.3";
     }
 
-    public Team[] getTeamBySummoner(long summonerId){
-        return get(String.format("by-summoner/%s", summonerId)).getEntity(Team[].class);
+    /**
+     * Retrieve teams for one or more summoners
+     * @param summonerIds one or more summoner ids
+     * @return a map of lists of {@link Team} objects, with the map's keys being the requested summoner ids
+     */
+    public Map<String, List<Team>> getTeamBySummoner(long... summonerIds){
+        return get(String.format("by-summoner/%s", commaDelimit(summonerIds))).getEntity(new GenericType<Map<String, List<Team>>>(){});
     }
 
     @Override

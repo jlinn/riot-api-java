@@ -13,13 +13,12 @@ public class Team {
     public Date lastJoinDate;
     public Date lastJoinedRankedTeamQueueDate;
     public MatchHistorySummary[] matchHistory;
-    public MessageOfDay messageOfDay;
     public Date modifyDate;
     public String name;
     public Roster roster;
     public Date secondLastJoinDate;
     public String status;
     public String tag;
-    public TeamStatsSummary teamStatSummary;
+    public TeamStatDetail[] teamStatDetails;
     public Date thirdLastJoinDate;
 }

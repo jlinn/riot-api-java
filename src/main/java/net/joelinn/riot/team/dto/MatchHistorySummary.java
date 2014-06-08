@@ -6,6 +6,7 @@ package net.joelinn.riot.team.dto;
  */
 public class MatchHistorySummary {
     public int assists;
+    public long date;
     public int deaths;
     public long gameId;
     public String gameMode;

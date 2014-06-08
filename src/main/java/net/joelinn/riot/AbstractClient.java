@@ -1,5 +1,6 @@
 package net.joelinn.riot;
 
+import com.google.common.base.Joiner;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
@@ -13,6 +14,9 @@ import org.codehaus.jackson.map.ObjectMapper;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriBuilder;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Joe Linn
@@ -36,7 +40,8 @@ public abstract class AbstractClient {
         this.apiKey = apiKey;
 
         ClientConfig config = new DefaultClientConfig();
-        ObjectMapper mapper = new ObjectMapper();
+        ObjectMapper mapper = new ObjectMapper()
+                .configure(DeserializationConfig.Feature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         JacksonJsonProvider provider = new JacksonJsonProvider(mapper);
         config.getSingletons().add(provider);
         Client client = Client.create(config);
@@ -127,5 +132,26 @@ public abstract class AbstractClient {
             webResource = webResource.queryParams(queryParams);
         }
         return webResource.accept(MediaType.APPLICATION_JSON).type(MediaType.APPLICATION_JSON);
+    }
+
+    /**
+     *
+     * @param longs one or more longs
+     * @return the given longs as a single comma delimited string
+     */
+    protected String commaDelimit(long... longs){
+        List<String> strings = new ArrayList<>(longs.length);
+        for (long aLong : longs) {
+            strings.add(String.valueOf(aLong));
+        }
+        return Joiner.on(",").join(strings);
+    }
+
+    /**
+     * @param strings one or more strings
+     * @return the given strings as a single comma delimited string
+     */
+    protected String commaDelimit(String... strings){
+        return Joiner.on(",").join(Arrays.asList(strings));
     }
 }
